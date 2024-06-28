@@ -1,12 +1,22 @@
+import { useState } from 'react';
+
 import Post from './Post';
+import NewPost from './NewPost';
+import Modal from './Modal';
 import classes from './PostsList.module.css';
 
-function PostsList() {
+function PostsList({ isPosting, onStopPosting }) {
   return (
-    <ul className={classes.posts}>
-      <Post author="Maximilian" body="React.js is awesome!" />
-      <Post author="Manuel" body="Check out the full course!" />
-    </ul>
+    <>
+      {isPosting && (
+        <Modal onClose={onStopPosting}>
+          <NewPost onCancel={onStopPosting} />
+        </Modal>
+      )}
+      <ul className={classes.posts}>
+        <Post author="Manuel" body="Check out the full course!" />
+      </ul>
+    </>
   );
 }
 
