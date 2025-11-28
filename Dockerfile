@@ -16,7 +16,7 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 # Copy hasil build dari Stage 1 ke folder Nginx
 # Perhatikan: Create React App biasanya output di /app/build
 # Jika pakai Vite, outputnya biasanya /app/dist. Sesuaikan path di bawah ini:
-COPY --from=builder /app/build /usr/share/nginx/html
+COPY --from=builder /app/dist /usr/share/nginx/html
 
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
